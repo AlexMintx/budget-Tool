@@ -1,2 +1,73 @@
-<p>home works!</p>
-<input type="text" pInputText />
+<div class="grid">
+  <div class="col-4">
+    <p-accordion>
+      <p-accordionTab header="Income" [selected]="true">
+
+        <form [formGroup]="income">
+          <div formArrayName='incomeInput'>
+            <div *ngFor='let x of getIncome.controls; let i = index'>
+              <label for="income-{{1+i}}">{{1+i}}: </label>
+              <input id="income-{{1+i}}" type="number" [formControlName]="i" pInputText (keydown)="keyupSumOfIncome()">
+            </div>
+            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+              (click)="addAnotherIncome()"></button>
+          </div>
+        </form>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+
+  <div class="col-4">
+    <p-accordion>
+      <p-accordionTab header="Housing/Living Expenses" [selected]="true">
+        <form [formGroup]="expense">
+          <div formArrayName='expenseInput'>
+            <div *ngFor='let x of getExpense.controls; let i = index'>
+              <label for="expense-{{1+i}}">{{1+i}}: </label>
+              <input id="expense-{{1+i}}" type="number" [formControlName]="i" pInputText (keyup)="keyupSumOfExpense()">
+            </div>
+            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+              (click)="addAnotherExpense()"></button>
+          </div>
+        </form>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+
+  <div class="col-4">
+    <p-accordion>
+      <p-accordionTab header="Utilities" [selected]="true">
+        <form [formGroup]="utilities">
+          <div formArrayName='utilitiesInput'>
+            <div *ngFor='let x of getUtilities.controls; let i = index'>
+              <label for="utilities-{{1+i}}">{{1+i}}: </label>
+              <input id="utilities-{{1+i}}" type="number" [formControlName]="i" pInputText
+                (keyup)="keyupSumOfUtilities()">
+
+            </div>
+            <div class="justify-content-end flex-wrap">
+                  <div class="flex align-items-center justify-content-center">
+            <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded"
+              (click)="addUtility()"></button></div>
+            </div>
+            </div>
+        </form>
+      </p-accordionTab>
+    </p-accordion>
+  </div>
+
+
+</div>
+
+
+
+<div>
+  {{ income.value |json}} {{ expense.value |json}}
+
+</div>
+
+
+<div>
+  {{ totalIncome | json}} {{ totalExpense | json}}
+
+</div>
