@@ -8,7 +8,11 @@ import {AccordionModule} from 'primeng/accordion';     //accordion and accordion
 import {MenuItem} from 'primeng/api';                  //api
 import {InputTextModule} from 'primeng/inputtext';
 import { HomeComponent } from './home/home.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ButtonModule} from 'primeng/button';
+import {CardModule} from 'primeng/card';
+import {InputNumberModule} from 'primeng/inputnumber';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +20,15 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AccordionModule,
-    InputTextModule
+    InputTextModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    CardModule,
+    AccordionModule,
+    InputNumberModule
   ],
   providers: [],
   bootstrap: [AppComponent]
